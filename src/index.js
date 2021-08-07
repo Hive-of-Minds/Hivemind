@@ -23,8 +23,11 @@ client.on('message', message => {
     if (message.content === `${prefix}ping`) {
         // Sends original message then edits with ping
         message.channel.send(`Pong!`).then(async (msg) => {
-            await msg.edit(`🏓 Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms`)
+            await msg.edit(`🏓 Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms`);
         });
+    } else if (message.content === `${prefix}count`) {
+        // Displays number of members in server
+        message.channel.send(`Total member count: ${message.guild.memberCount}`);
     }
 })
 
