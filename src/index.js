@@ -21,7 +21,10 @@ client.on('message', message => {
 
     // Ping command (code will be cleaned up in future)
     if (message.content === `${prefix}ping`) {
-        message.channel.send('Pong!');
+        // Sends original message then edits with ping
+        message.channel.send(`Pong!`).then(async (msg) => {
+            await msg.edit(`🏓 Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms`)
+        });
     }
 })
 
