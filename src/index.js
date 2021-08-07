@@ -1,15 +1,8 @@
 const {Client} = require('discord.js');
+const client = new Client();
+
 const {config} = require('dotenv');
-
-// Creates new D
-const client = new Client({
-    disableMentions: 'everyone'
-});
-
-// Sets the path to config file .env
-config({
-    path: __dirname + "/.env"
-});
+config({path: __dirname + "/.env"});
 
 // Event listener for when the bot has started
 client.on('ready', () => {
@@ -21,6 +14,14 @@ client.on('ready', () => {
         status: 'online',
     });
 });
+
+client.on('message', message => {
+
+    // Ping command (code will be cleaned up in future)
+    if (message.content === 'h.ping') {
+        message.channel.send('Pong!');
+    }
+})
 
 // Starts the bot
 let login = client.login(process.env.TOKEN);
