@@ -8,6 +8,7 @@ class Client extends Discord.Client {
     constructor() {
         super({intents});
         this.commands = new Discord.Collection();
+        this.snipes = new Discord.Collection();
 
         this.token = config.token;
         this.prefix = config.prefix;
