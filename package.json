@@ -1,16 +1,25 @@
 {
-  "name": "untitled2",
+  "name": "hivemind",
   "version": "1.0.0",
-  "description": "",
+  "description": "A cool bot made by a cool person, oh and also the other 3",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "divadnebnahtan",
+  "license": "MIT",
   "dependencies": {
     "ascii-table": "0.0.9",
-    "discord.js": "^12.5.3"
-  }
+    "discord.js": "^13.1.0-dev.1628381090.570fba3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divadnebnahtan/Hivemind.git"
+  },
+  "bugs": {
+    "url": "https://github.com/divadnebnahtan/Hivemind/issues"
+  },
+  "homepage": "https://github.com/divadnebnahtan/Hivemind#readme"
 }

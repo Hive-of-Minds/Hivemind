@@ -1,7 +1,12 @@
-module.exports = {
+const Command = require('../structures/command.js');
+
+module.exports = new Command({
     name: 'ping',
     description: 'Ping command',
-    execute(message, args) {
-        message.channel.send(`Pong! ${message.client.ws.ping}ms`);
+
+    async run(message, args, client) {
+        const msg = await message.reply(`:ping_pong: Pong!`);
+
+        msg.edit(`:ping_pong: __Pong!__\nLatency: ${msg.createdTimestamp - message.createdTimestamp}ms.\nAPI Latency: ${client.ws.ping}ms.`);
     }
-};
+});
