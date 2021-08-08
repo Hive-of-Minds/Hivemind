@@ -11,7 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "ascii-table": "0.0.9",
-    "discord.js": "^13.1.0-dev.1628381090.570fba3"
+    "discord.js": "^13.1.0-dev.1628381090.570fba3",
+    "path.js": "^1.0.7"
   },
   "repository": {
     "type": "git",

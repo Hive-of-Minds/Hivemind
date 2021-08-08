@@ -1,7 +1,8 @@
 const Discord = require('discord.js');
-const fs = require("fs");
+const fs = require('fs');
 const intents = new Discord.Intents(32509);
 const config = require('../config.json');
+const path = require('path');
 
 class Client extends Discord.Client {
     constructor() {
@@ -14,14 +15,14 @@ class Client extends Discord.Client {
     }
 
     start(token) {
-        fs.readdirSync('./commands')
+        fs.readdirSync(path.resolve(__dirname, '../commands'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
                 const command = require(`../commands/${file}`);
                 console.log(`- Command '${command.name}' loaded`);
                 this.commands.set(command.name, command);
             });
-        fs.readdirSync('./events')
+        fs.readdirSync(path.resolve(__dirname, '../events'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
                 const event = require(`../events/${file}`);
