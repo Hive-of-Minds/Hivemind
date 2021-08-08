@@ -1,5 +1,5 @@
 const Command = require('../structures/command.js');
-
+//help me im dying
 module.exports = new Command({
     name: 'ping',
     description: 'Ping command',
