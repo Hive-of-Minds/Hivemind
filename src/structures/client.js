@@ -14,14 +14,14 @@ class Client extends Discord.Client {
     }
 
     start(token) {
-        fs.readdirSync('./src/commands')
+        fs.readdirSync('./commands')
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
                 const command = require(`../commands/${file}`);
                 console.log(`- Command '${command.name}' loaded`);
                 this.commands.set(command.name, command);
             });
-        fs.readdirSync('./src/events')
+        fs.readdirSync('./events')
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
                 const event = require(`../events/${file}`);
