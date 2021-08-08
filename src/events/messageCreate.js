@@ -1,6 +1,9 @@
 const Event = require('../structures/event.js');
 
 module.exports = new Event('messageCreate', (client, message) => {
+    if (message.content.includes("yay")) {
+        message.channel.send("*yat");
+    }
     if (!message.content.startsWith(client.prefix)) return;
 
     const args = message.content.substring(client.prefix.length).split(/ +/);
