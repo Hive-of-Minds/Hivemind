@@ -6,6 +6,6 @@ module.exports = new Command({
     aliases: ['members', 'membercount'],
 
     async run(message, args, client) {
-        message.channel.send(`Total members: ${message.guild.memberCount}`)
+        message.reply(`Total members: ${message.guild.memberCount}`)
     }
 });

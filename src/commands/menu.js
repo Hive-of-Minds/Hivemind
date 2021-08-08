@@ -9,12 +9,12 @@ module.exports = new Command({
         const row = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
-                    .setCustomId('help-selector')
+                    .setCustomId(`help-selector ${message.author.id}`)
                     .setPlaceholder('Nothing selected')
                     .addOptions(client.commands.map((command, name) => {
                         return {
                             label: name,
-                            description: command.description,
+                            description: command.aliases ? command.aliases.join(', ') : '[]',
                             value: name,
                         };
                     }))
@@ -27,6 +27,6 @@ module.exports = new Command({
             .setThumbnail('https://cdn.discordapp.com/attachments/873564554674716765/873744094390788126/help_command_book.png')
             .setDescription('Select a command to get started!');
 
-        await message.channel.send({embeds: [embed], components: [row]});
+        await message.reply({embeds: [embed], components: [row]});
     }
 });

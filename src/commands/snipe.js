@@ -8,7 +8,7 @@ module.exports = new Command({
     async run(message, args, client) {
         const snipes = client.snipes.get(message.channel.id) || [];
         const snipe = snipes[0];
-        if (!snipe) return message.channel.send('no message has been deleted')
+        if (!snipe) return message.reply('no message has been deleted')
         const embed = new MessageEmbed()
             .setAuthor(snipe.author.tag)
             .setThumbnail(snipe.author.avatarURL())
@@ -16,6 +16,6 @@ module.exports = new Command({
             .setDescription(snipe.content)
             .setTimestamp()
             .setFooter("Requested by " + message.author.tag);
-        message.channel.send({embeds: [embed]});
+        message.reply({embeds: [embed]});
     }
 });
