@@ -9,7 +9,7 @@ module.exports = new Command({
         const row = new MessageActionRow()
             .addComponents(
                 new MessageSelectMenu()
-                    .setCustomId(`help-selector ${message.author.id}`)
+                    .setCustomId(`help ${client.prefix} ${message.author.id}`)
                     .setPlaceholder('Nothing selected')
                     .addOptions(client.commands.map((command, name) => {
                         return {

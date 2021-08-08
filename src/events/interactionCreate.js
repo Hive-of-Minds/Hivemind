@@ -2,7 +2,7 @@ const Event = require('../structures/event.js');
 const {MessageEmbed} = require("discord.js");
 
 module.exports = new Event('interactionCreate', (client, interaction) => {
-    if (!interaction.isSelectMenu() || interaction.customId !== `help-selector ${interaction.user.id}`) return;
+    if (!interaction.isSelectMenu() || interaction.customId !== `help ${client.prefix} ${interaction.user.id}`) return;
 
     const command = client.commands.find(cmd => cmd.name === interaction.values[0]);
 
