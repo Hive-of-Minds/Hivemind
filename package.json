@@ -13,7 +13,6 @@
     "ascii-table": "0.0.9",
     "discord.js": "^13.1.0-dev.1628381090.570fba3"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/divadnebnahtan/Hivemind.git"
