@@ -21,7 +21,7 @@ client.on('message', message => {
 
     const args = message.content.slice(prefix.length) // Removes the prefix from the message
         .trim() // Removes all whitespace (blank characters) from the start/end
-        .split(' '); // Separates message by spaces
+        .split(/ +/); // Separates message by blank characters
     const command = args.shift().toLowerCase(); // gets the first argument (command name) and also removes it from original args
 
     if (command === 'ping') {
