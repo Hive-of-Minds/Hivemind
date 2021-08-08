@@ -1,7 +1,7 @@
 {
   "prefix": "h.",
   "token": "ODczNTY0Mjg5MTc5NDYzNjkw.YQ6QJA.CBWSOiflMCW3eC1twtTiSXv2b-s",
-  "bot_presence": {
+  "botPresence": {
     "status": "online",
     "activity": "Cool bot made by cool people"
   }

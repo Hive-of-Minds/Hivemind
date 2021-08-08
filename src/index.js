@@ -1,44 +1,61 @@
-const {Client} = require('discord.js');
-const client = new Client();
-const {prefix, token, bot_presence} = require('./config.json')
+const Discord = require('discord.js');
+const fs = require('fs');
+// const path = require('path');
+
+const client = new Discord.Client();
+client.commands = new Discord.Collection();
+
+// Get all command files ending in .js
+const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+
+// Get values from config
+const {
+    prefix,
+    token,
+    botPresence
+} = require('./config.json');
 
 // Event listener for when the bot has started
-client.on('ready', () => {
-    console.log(`I am now online, my name is ${client.user.username}#${client.user.discriminator}`);
+client.once('ready', () => {
+    console.log(`I am now ${botPresence.status}, my name is ${client.user.username}#${client.user.discriminator}`);
 
     // Sets the bot's status and activity
     client.user.setPresence({
-        activity: {name: bot_presence.activity},
-        status: bot_presence.status,
+        activity: {name: botPresence.activity},
+        status: botPresence.status,
     });
 });
 
-client.on('message', message => {
-    // Exit if message was sent by a bot, not in a server, or doesn't start with the prefix
-    if (!message.guild) return;
-    if (message.author.bot) return;
-    if (!message.content.startsWith(prefix)) return;
-
-    const args = message.content.slice(prefix.length) // Removes the prefix from the message
-        .trim() // Removes all whitespace (blank characters) from the start/end
-        .split(/ +/); // Separates message by blank characters
-    const command = args.shift().toLowerCase(); // gets the first argument (command name) and also removes it from original args
-
-    if (command === 'ping') {
-        // Sends original message then edits with time since
-        message.channel.send(`Pong!`).then(async (msg) => {
-            await msg.edit(`🏓 Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is ${client.ws.ping}ms`);
-        });
-    } else if (command === 'count') {
-        // Displays number of members in server
-        message.channel.send(`Total member count: ${message.guild.memberCount}`);
-    } else if (command === 'test'){
-        // Return if no args
-        if (!args.length) return message.channel.send(`You did not input any arguments, ${message.author}!`);
-        // Reply with command info
-        message.channel.send(`Prefix: ${prefix}\nCommand name: ${command}\nArguments: ${args}`);
-    }
-})
-
 // Starts the bot
 client.login(token);
+
+// Add all commands to a big list
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.name, command);
+    console.log(`Registered command: ${command.name}`);
+}
+
+// Finds corresponding command when message sent
+client.on('message', message => {
+
+    // if not starting with prefix, sent by bot, or in dms, dont run the command!
+    if (!message.content.startsWith(prefix) || message.author.bot || !message.guild) return;
+
+    const args = message.content
+        .slice(prefix.length) // removes prefix
+        .trim() // removes trailing and leading whitespace
+        .split(/ +/); // separates by blank character
+    const command = args.shift().toLowerCase(); // gets first arg (command name)
+
+    //  checks if command exists
+    if (!client.commands.has(command)) return;
+    try {
+        // runs command
+        client.commands.get(command).execute(message, args);
+    } catch (error) {
+        // incase of error
+        console.error(error);
+        message.reply('An internal error occurred.');
+    }
+});
