@@ -12,9 +12,10 @@ module.exports = new Command({
         const embed = new MessageEmbed()
             .setAuthor(snipe.author.tag)
             .setThumbnail(snipe.author.avatarURL())
-            .setColor('RANDOM')
+            .setColor('#DD8505')
             .setDescription(snipe.content)
-            .setTimestamp();
+            .setTimestamp()
+            .setFooter("Requested by " + message.author.tag);
         message.channel.send({embeds: [embed]});
     }
 });
