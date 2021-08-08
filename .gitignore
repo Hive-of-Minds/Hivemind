@@ -1,4 +1,6 @@
 node_modules/
 .idea/
+auto/
+reload.js
 config.json
 Run.bat

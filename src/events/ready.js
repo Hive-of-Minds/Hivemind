@@ -6,4 +6,8 @@ module.exports = new Event('ready', client => {
         activity: {name: client.botPresence.activity},
         status: client.botPresence.status,
     });
+    client.channels.fetch('873797172246745138')
+    .then(channel => {
+        channel.send("Online")
+    });
 });
