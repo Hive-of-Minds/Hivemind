@@ -1,8 +1,9 @@
 const Command = require('../structures/command.js');
-//help me im dying lol
+
 module.exports = new Command({
     name: 'ping',
     description: 'Ping command',
+    aliases: ["pong", "pingpong"],
 
     async run(message, args, client) {
         const msg = await message.reply(`:ping_pong: Pong!`);
