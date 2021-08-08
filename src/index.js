@@ -7,7 +7,7 @@ client.on('ready', () => {
     console.log(`I am now online, my name is ${client.user.username}#${client.user.discriminator}`);
 
     // Sets the bot's status and activity
-    let presence = client.user.setPresence({
+    client.user.setPresence({
         activity: {name: bot_presence.activity},
         status: bot_presence.status,
     });
@@ -41,4 +41,4 @@ client.on('message', message => {
 })
 
 // Starts the bot
-let login = client.login(token);
+client.login(token);
