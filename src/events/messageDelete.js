@@ -1,8 +1,6 @@
 const Event = require('../structures/event.js');
 
 module.exports = new Event('messageDelete', (client, message) => {
-    console.log("message has been deleted");
-
     const snipes = message.client.snipes.get(message.channel.id) || [];
     if (message.attachments.size > 0) {
         snipes.unshift({
