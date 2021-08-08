@@ -1,5 +1,5 @@
 const Event = require('../structures/event.js');
-
+//hello
 module.exports = new Event('ready', client => {
     console.log(`I am now ${client.botPresence.status}, my name is ${client.user.username}#${client.user.discriminator}. My prefix is ${client.prefix}`);
     client.user.setPresence({
