@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const fs = require("fs");
 const intents = new Discord.Intents(32509);
-const config = require('../data/config.json');
+const config = require('../config.json');
 
 class Client extends Discord.Client {
     constructor() {
