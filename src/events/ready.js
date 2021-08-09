@@ -15,9 +15,9 @@ module.exports = new Event({
             ['discriminator', client.user.discriminator],
             ['id', client.user.id],
             ['prefix', client.prefix],
-            ['status', client.status],
-            ['activity', client.activity],
-            ['activity-type', client.activityType],
+            // ['status', client.status],
+            // ['activity', client.activity],
+            // ['activity-type', client.activityType],
         ];
         console.log(table(data, config));
 
