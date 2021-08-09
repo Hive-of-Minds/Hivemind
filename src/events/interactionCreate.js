@@ -31,5 +31,8 @@ module.exports = new Event('interactionCreate', (client, interaction) => {
             }
             interaction.update({embeds: [embed]});
         }
+        else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`){
+            
+        }
     }
 });
