@@ -1,16 +1,16 @@
 const Discord = require('discord.js');
 const fs = require('fs');
-const intents = new Discord.Intents(32509);
 const config = require('../config.json');
 const path = require('path');
+const {Collection, Intents} = require("discord.js");
 
 class Client extends Discord.Client {
     constructor() {
-        super({intents});
+        super({intents: new Intents(32509)});
         this.startTime = performance.now();
 
-        this.commands = new Discord.Collection();
-        this.snipes = new Discord.Collection();
+        this.commands = new Collection();
+        this.snipes = new Collection();
 
         this.token = config.token;
         this.prefix = config.prefix;
