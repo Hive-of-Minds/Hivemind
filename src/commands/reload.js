@@ -4,6 +4,7 @@ module.exports = new Command({
     name: 'reload',
     description: 'reload command',
     ownerOnly: true,
+    hidden: true,
 
     async run(message, args, client) {
         client.reload();

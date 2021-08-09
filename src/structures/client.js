@@ -7,13 +7,17 @@ const path = require('path');
 class Client extends Discord.Client {
     constructor() {
         super({intents});
+        this.startTime = performance.now();
+
         this.commands = new Discord.Collection();
         this.snipes = new Discord.Collection();
 
         this.token = config.token;
         this.prefix = config.prefix;
         this.owners = config.owners;
-        this.botPresence = config.botPresence;
+        this.activity = config.botPresence.activity;
+        this.activityType = config.botPresence.activityType;
+        this.status = config.botPresence.status;
     }
 
     start(token) {

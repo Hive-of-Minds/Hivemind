@@ -11,7 +11,7 @@ module.exports = new Command({
                 new MessageSelectMenu()
                     .setCustomId(`help ${client.prefix} ${message.author.id}`)
                     .setPlaceholder('Select a command')
-                    .addOptions(client.commands.map((command, name) => {
+                    .addOptions(client.commands.filter(command => !command.hidden).map((command, name) => {
                         return {
                             label: name,
                             description: command.aliases ? command.aliases.join(', ') : '',

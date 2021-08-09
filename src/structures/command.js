@@ -9,6 +9,7 @@ class Command {
         this.userPermissions = options.userPermissions;
         this.cooldown = options.cooldown;
         this.ownerOnly = options.ownerOnly;
+        this.hidden = options.hidden;
         this.run = options.run;
     }
 }
