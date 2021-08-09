@@ -16,7 +16,8 @@
     "node-fetch": "^2.6.1",
     "path.js": "^1.0.7",
     "table": "^6.7.1",
-    "translate": "^0.7.0"
+    "translate": "^0.7.0",
+    "weather-js": "^2.0.0"
   },
   "repository": {
     "type": "git",
