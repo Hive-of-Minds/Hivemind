@@ -44,15 +44,15 @@ class Client extends Discord.Client {
         getFiles(path.resolve(__dirname, '../commands'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
-                delete require.cache[require.resolve(`${file}`)]
-                const command = require(`${file}`);
-                this.commands.set(command.name, command);
+                delete require.cache[require.resolve(file)]
+                const command = require(file);
+                this.commands.set(path.basename(path.dirname(file)), command);
             });
         getFiles(path.resolve(__dirname, '../events'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
-                delete require.cache[require.resolve(`${file}`)]
-                const event = require(`${file}`);
+                delete require.cache[require.resolve(file)]
+                const event = require(file);
                 this.on(event.event, event.run.bind(null, this));
             });
     }
