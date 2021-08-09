@@ -29,6 +29,7 @@ module.exports = new Command({
                     .setTitle(observationPoint)
                     .setAuthor(message.author.username, message.author.avatarURL())
                     .setThumbnail(imageUrl)
+                    .setColor('#DD8505')
                     .addField('Temperature', `${temperature}°C`, true)
                     .addField('Feels like', `${feelsLike}°C`, true)
                     .addField('Humidity', `${humidity}%`, true)
