@@ -4,6 +4,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = new Command({
     name: 'uptime',
     description: 'uptime command',
+    emoji: '⏱',
 
     async run(message, args, client) {
         let totalSeconds = client.uptime / 1000;

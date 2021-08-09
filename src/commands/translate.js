@@ -1,11 +1,12 @@
 const Command = require('../structures/command.js');
-const translate = require('translate')
+// const translate = require('translate')
 const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require('discord.js');
 
 module.exports = new Command({
     name: 'translate',
     description: 'translates the given string to one of the languages specified.',
     aliases: ["tlate"],
+    emoji: `🌐`,
 
     async run(message, args, client) {
         const row = new MessageActionRow()

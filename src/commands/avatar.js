@@ -6,6 +6,7 @@ module.exports = new Command({
     description: 'Avatar command',
     aliases: ['pfp', 'profilepic', 'profile'],
     arguments: '[user]',
+    emoji: '📷',
 
     async run(message, args, client) {
         if (message.mentions.users.size > 1) {
