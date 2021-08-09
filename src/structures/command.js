@@ -8,6 +8,7 @@ class Command {
         this.botPermissions = options.botPermissions;
         this.userPermissions = options.userPermissions;
         this.cooldown = options.cooldown;
+        this.ownerOnly = options.ownerOnly;
         this.run = options.run;
     }
 }

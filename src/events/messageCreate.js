@@ -15,6 +15,9 @@ module.exports = new Event('messageCreate', (client, message) => {
         return command.name === name || (command.aliases && command.aliases.find(alias => alias === name));
     });
     if (command) {
+        if (command.ownerOnly && !client.owners.includes(message.author.id)) {
+            return message.reply(`Only owners can use ${command.name}`);
+        }
         if (command.botPermissions) {
             let clientChannelPermissions = message.channel.permissionsFor(message.guild.me);
             if (!clientChannelPermissions.has(command.botPermissions)) {
