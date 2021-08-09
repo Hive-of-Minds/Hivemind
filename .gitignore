@@ -1,5 +1,5 @@
 node_modules/
 .idea/
-auto/
 config.json
 Run.bat
+thecaretaker.py
