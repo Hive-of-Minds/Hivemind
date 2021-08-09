@@ -6,10 +6,10 @@ const cooldowns = new Map();
 module.exports = new Event('messageCreate', (client, message) => {
     if (!message.content.startsWith(client.prefix)) return;
 
-    //  prefix  args[0]    args[1]     args[2]     args[3]
+    //  prefix  name    args[0]     args[1]     args[2]
     //    h.    help     dog         cat         fish
     const args = message.content.substring(client.prefix.length).trim().split(/ +/);
-    const name = args[0];
+    const name = args.shift().toLowerCase();
 
     const command = client.commands.find(command => {
         return command.name === name || (command.aliases && command.aliases.find(alias => alias === name));

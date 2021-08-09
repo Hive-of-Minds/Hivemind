@@ -17,22 +17,28 @@ class Client extends Discord.Client {
     }
 
     start(token) {
+        this.reload()
+        this.login(token)
+    }
+
+    reload() {
+        this.commands.clear();
+        this.removeAllListeners();
+
         fs.readdirSync(path.resolve(__dirname, '../commands'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
+                delete require.cache[require.resolve(`../commands/${file}`)]
                 const command = require(`../commands/${file}`);
-                console.log(`- Command '${command.name}' loaded`);
                 this.commands.set(command.name, command);
             });
         fs.readdirSync(path.resolve(__dirname, '../events'))
             .filter(file => file.endsWith('.js'))
             .forEach(file => {
+                delete require.cache[require.resolve(`../events/${file}`)]
                 const event = require(`../events/${file}`);
-                console.log(`- Event '${event.event}' loaded`);
                 this.on(event.event, event.run.bind(null, this));
             })
-
-        this.login(token)
     }
 }
 
