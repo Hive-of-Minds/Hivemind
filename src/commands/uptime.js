@@ -17,6 +17,7 @@ module.exports = new Command({
         const embed = new MessageEmbed()
             .setColor('#DD8505')
             .setTitle(':stopwatch: Uptime')
+            .setTimestamp()
             .setAuthor(message.author.username, message.author.avatarURL());
         if (days)
             embed.addField('Days', '' + days, true);
