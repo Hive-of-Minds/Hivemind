@@ -6,7 +6,7 @@ module.exports = new Event({
     async run(client, interaction) {
         if (interaction.isSelectMenu()) {
             if (interaction.customId === `help ${client.prefix} ${interaction.user.id}`) {
-                const command = client.commands.find(cmd => cmd.name === interaction.values[0]);
+                const command = Array.from(client.commands.keys()).find(command => command.name === interaction.values[0]);
 
                 const embed = new MessageEmbed()
                     .setColor('#DD8505')

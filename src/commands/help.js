@@ -7,19 +7,18 @@ module.exports = new Command({
     aliases: ['info', 'hepl'],
 
     async run(message, args, client) {
-        const row = new MessageActionRow()
-            .addComponents(
-                new MessageSelectMenu()
-                    .setCustomId(`help ${client.prefix} ${message.author.id}`)
-                    .setPlaceholder('Select a command')
-                    .addOptions(client.commands.filter(command => !command.hidden).map((command, name) => {
-                        return {
-                            label: name,
-                            description: command.aliases ? command.aliases.join(', ') : '',
-                            value: name,
-                        };
-                    }))
-            );
+        const options = Array.from(client.commands.keys()).filter(command => !command.hidden).map(command => {
+            return {
+                label: command.name,
+                description: command.aliases ? command.aliases.join(', ') : '',
+                value: command.name,
+            };
+        });
+        const row = new MessageActionRow().addComponents(new MessageSelectMenu()
+            .setCustomId(`help ${client.prefix} ${message.author.id}`)
+            .setPlaceholder('No command selected')
+            .addOptions(options)
+        );
 
         const embed = new MessageEmbed()
             .setColor('#DD8505')

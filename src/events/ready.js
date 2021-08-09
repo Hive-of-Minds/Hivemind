@@ -24,8 +24,8 @@ module.exports = new Event({
                 content: 'Command Info'
             }
         }
-        tableData = client.commands.map(command => {
-            return [command.name, command.description, `${client.prefix}${command.name} ${command.arguments ? command.arguments : ''}`];
+        tableData = client.commands.map((folder, command) => {
+            return [command.name, command.description, `${client.prefix}${command.name} ${command.arguments ? command.arguments : ''}`, folder];
         });
         console.log(table(tableData, tableConfig));
 
