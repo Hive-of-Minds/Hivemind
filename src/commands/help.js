@@ -5,13 +5,15 @@ module.exports = new Command({
     name: 'help',
     description: 'Help command',
     aliases: ['info', 'hepl'],
+    emoji: '📙',
 
     async run(message, args, client) {
         const options = Array.from(client.commands.keys()).filter(command => !command.hidden).map(command => {
             return {
                 label: command.name,
-                description: command.aliases ? command.aliases.join(', ') : '',
+                description: command.aliases ? command.aliases.join(', ') : null,
                 value: command.name,
+                emoji: command.emoji
             };
         });
         const row = new MessageActionRow().addComponents(new MessageSelectMenu()

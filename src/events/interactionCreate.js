@@ -15,7 +15,7 @@ module.exports = new Event({
                     .setThumbnail('https://cdn.discordapp.com/attachments/873564554674716765/873744094390788126/help_command_book.png')
                     .addField(
                         'Usage',
-                        `\`\`\`\n${client.prefix}${command.name} ${command.arguments ? command.arguments : ''}\n\`\`\``,
+                        `\`\`\`\n${client.prefix}${command.name} ${command.arguments || ''}\n\`\`\``,
                         false
                     );
 
