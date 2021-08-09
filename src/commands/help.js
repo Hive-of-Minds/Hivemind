@@ -10,11 +10,11 @@ module.exports = new Command({
             .addComponents(
                 new MessageSelectMenu()
                     .setCustomId(`help ${client.prefix} ${message.author.id}`)
-                    .setPlaceholder('Nothing selected')
+                    .setPlaceholder('Select a command')
                     .addOptions(client.commands.map((command, name) => {
                         return {
                             label: name,
-                            description: command.aliases ? command.aliases.join(', ') : '[]',
+                            description: command.aliases ? command.aliases.join(', ') : '',
                             value: name,
                         };
                     }))

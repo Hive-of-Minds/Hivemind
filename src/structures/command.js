@@ -5,8 +5,8 @@ class Command {
         this.description = options.description;
         this.aliases = options.aliases;
         this.arguments = options.arguments;
-        // this.botPermissions = options.botPermissions;
-        // this.userPermissions = options.userPermissions;
+        this.botPermissions = options.botPermissions;
+        this.userPermissions = options.userPermissions;
 
         this.run = options.run;
     }
