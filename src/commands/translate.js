@@ -37,9 +37,8 @@ module.exports = new Command({
                             label: "Chinese",
                             description: command.aliases ? command.aliases.join(', ') : '',
                             value: "zh",
-                        }])
-            )}
-});
+                        }]))
+
 
 
         const msg = await message.reply(`:ping_pong: Pong!`);
