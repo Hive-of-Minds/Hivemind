@@ -12,16 +12,15 @@ module.exports = new Command({
             message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments ? this.arguments : ''}\``);
             return;
         }
+        const embed = new MessageEmbed();
         const user = message.mentions.users.first();
         if (user === undefined) {
-            const embed = new MessageEmbed()
-                .setTitle(message.author.tag)
+                embed.setTitle(message.author.tag)
                 .setImage(message.author.displayAvatarURL())
                 .setColor('RANDOM')
             message.reply({embeds: [embed]});
         } else {
-            const embed = new MessageEmbed()
-                .setTitle(user.tag)
+            embed.setTitle(user.tag)
                 .setImage(user.displayAvatarURL())
                 .setColor('RANDOM')
                 .setFooter('Requested by ' + message.author.tag);
