@@ -15,9 +15,6 @@ class Client extends Discord.Client {
         this.token = config.token;
         this.prefix = config.prefix;
         this.owners = config.owners;
-        this.activity = config.botPresence.activity;
-        this.activityType = config.botPresence.activityType;
-        this.status = config.botPresence.status;
     }
 
     start(token) {
