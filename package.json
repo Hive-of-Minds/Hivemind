@@ -12,6 +12,7 @@
   "dependencies": {
     "ascii-table": "0.0.9",
     "discord.js": "^13.1.0-dev.1628381090.570fba3",
+    "imageapi.js": "^1.7.0",
     "jquery": "^3.6.0",
     "node-fetch": "^2.6.1",
     "path.js": "^1.0.7",
