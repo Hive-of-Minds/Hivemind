@@ -4,10 +4,12 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'avatar',
     description: 'Avatar command',
+    aliases: ['pfp', 'profilepic', 'profile'],
+    arguments: '[user]',
 
     async run(message, args, client) {
         if (message.mentions.users.size > 1) {
-            message.reply("too many members mentioned");
+            message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments ? this.arguments : ''}\``);
             return;
         }
         const user = message.mentions.users.first();

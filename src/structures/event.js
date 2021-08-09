@@ -1,7 +1,7 @@
 class Event {
-    constructor(event, runFunction) {
-        this.event = event;
-        this.run = runFunction;
+    constructor(options) {
+        this.event = options.event;
+        this.run = options.run;
     }
 }
 

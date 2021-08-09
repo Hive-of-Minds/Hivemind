@@ -7,7 +7,9 @@ class Command {
         this.arguments = options.arguments;
         this.botPermissions = options.botPermissions;
         this.userPermissions = options.userPermissions;
-
+        this.cooldown = options.cooldown;
+        this.ownerOnly = options.ownerOnly;
+        this.hidden = options.hidden;
         this.run = options.run;
     }
 }
