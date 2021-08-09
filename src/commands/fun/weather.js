@@ -1,4 +1,4 @@
-const Command = require('../structures/command.js');
+const Command = require('../../structures/command.js');
 const weather = require('weather-js');
 const {MessageEmbed} = require("discord.js");
 
