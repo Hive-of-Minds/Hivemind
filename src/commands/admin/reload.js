@@ -3,6 +3,7 @@ const Command = require('../../structures/command.js');
 module.exports = new Command({
     name: 'reload',
     description: 'reload command',
+    emoji: '🔄',
     ownerOnly: true,
     hidden: true,
 

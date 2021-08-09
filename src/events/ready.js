@@ -24,9 +24,10 @@ module.exports = new Event({
                 content: 'Command Info'
             }
         }
-        tableData = client.commands.map(command => {
-            return [command.name, command.description, `${client.prefix}${command.name} ${command.arguments ? command.arguments : ''}`];
-        });
+        tableData = [['\x1b[1mName\x1b[0m', '\x1b[1mDescription\x1b[0m', '\x1b[1mUsage\x1b[0m', '\x1b[1mCategory\x1b[0m']].concat(
+            client.commands.map((folder, command) => {
+                return [command.name, command.description, `${client.prefix}${command.name} ${command.arguments || ''}`, folder];
+            }));
         console.log(table(tableData, tableConfig));
 
         if (client.prefix === "h.") {

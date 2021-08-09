@@ -6,10 +6,11 @@ module.exports = new Command({
     description: 'Avatar command',
     aliases: ['pfp', 'profilepic', 'profile'],
     arguments: '[user]',
+    emoji: '📷',
 
     async run(message, args, client) {
         if (message.mentions.users.size > 1) {
-            message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments ? this.arguments : ''}\``);
+            message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments || ''}\``);
             return;
         }
         const embed = new MessageEmbed();

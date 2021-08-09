@@ -4,6 +4,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'snipe',
     description: 'Snipe command',
+    emoji: '🔫',
 
     async run(message, args, client) {
         const snipes = client.snipes.get(message.channel.id) || [];

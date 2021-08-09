@@ -13,7 +13,7 @@ module.exports = new Event({
         const args = message.content.substring(client.prefix.length).trim().split(/ +/);
         const name = args.shift().toLowerCase();
 
-        const command = client.commands.find(command => {
+        const command = Array.from(client.commands.keys()).find(command => {
             return command.name === name || (command.aliases && command.aliases.find(alias => alias === name));
         });
         if (command) {

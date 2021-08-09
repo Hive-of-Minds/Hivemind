@@ -4,6 +4,7 @@ module.exports = new Command({
     name: 'ping',
     aliases: ['pong', 'pingpong'],
     description: 'Ping command',
+    emoji: '🏓',
 
     async run(message, args, client) {
         message.reply(":ping_pong: __Pong!__").then((message2) => {
