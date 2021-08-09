@@ -32,10 +32,9 @@ module.exports = new Event({
                     embed.addField('User permission(s)', `\`\`\`\n${command.userPermissions.join(', ')}\n\`\`\``, false);
                 }
                 interaction.update({embeds: [embed]});
+            } else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`) {
+
             }
-        }
-        else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`){
-            
         }
     }
 });

@@ -4,31 +4,30 @@ const {table} = require('table');
 module.exports = new Event({
     event: 'ready',
     async run(client) {
-        let config = {
+        let tableConfig = {
             header: {
                 alignment: 'center',
                 content: 'Discord Bot Info'
             }
         };
-        let data = [
+        let tableData = [
             ['username', client.user.username],
             ['discriminator', client.user.discriminator],
             ['id', client.user.id],
             ['prefix', client.prefix],
-            ['time', performance.now() - client.startTime]
+            ['time', (performance.now() - client.startTime).toFixed(0) + 'ms']
         ];
-        console.log(table(data, config));
-
-        config = {
+        console.log(table(tableData, tableConfig));
+        tableConfig = {
             header: {
                 alignment: 'center',
                 content: 'Command Info'
             }
         }
-        data = client.commands.map(command => {
+        tableData = client.commands.map(command => {
             return [command.name, command.description, `${client.prefix}${command.name} ${command.arguments ? command.arguments : ''}`];
         });
-        console.log(table(data, config));
+        console.log(table(tableData, tableConfig));
 
         if (client.prefix === "h.") {
             const today = new Date();
