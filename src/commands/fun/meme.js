@@ -8,7 +8,6 @@ module.exports = new Command({
     description: 'Meme command',
 
     async run (message, args, client) {
-        console.log(args.length);
         let subreddits = [
             "memes",
             "dankmemes",
@@ -25,7 +24,6 @@ module.exports = new Command({
         let list = "";
         subreddits.forEach(r => list += r + ", ");
         list.substring(0,list.length - 2);
-        console.log(list);
 
         if (args.length === 0) {
             let subreddit = subreddits[Math.floor(Math.random()*subreddits.length)];
@@ -38,7 +36,7 @@ module.exports = new Command({
                     .setImage(img);
                 message.channel.send({embeds: [embed]});
             } catch (e) {
-                console.log("Problem occurred while trying to access r/" + subreddit);
+                message.reply("Problem occurred while trying to access r/" + subreddit);
             }
         } else if (args.length === 1) {
             let subreddit = args[0];
@@ -56,7 +54,7 @@ module.exports = new Command({
                         .setImage(img);
                     message.channel.send({embeds: [embed]});
                 } catch (e) {
-                    console.log("Problem occurred while trying to access r/" + subreddit);
+                    message.reply("Problem occurred while trying to access r/" + subreddit);
                 }
             }
         } else {
