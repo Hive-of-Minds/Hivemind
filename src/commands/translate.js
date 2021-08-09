@@ -15,33 +15,40 @@ module.exports = new Command({
                     .setPlaceholder('Select a language')
                     .addOptions([{
                             label: "German",
-                            description: command.aliases ? command.aliases.join(', ') : '',
+                            description: null,
                             value: "de",
                         },
                         {
                             label: "French",
-                            description: command.aliases ? command.aliases.join(', ') : '',
+                            description: null,
                             value: "fr",
                         },
                         {
                             label: "Korean",
-                            description: command.aliases ? command.aliases.join(', ') : '',
+                            description: null,
                             value: "ko",
                         },
                         {
                             label: "Italian",
-                            description: command.aliases ? command.aliases.join(', ') : '',
+                            description: null,
                             value: "it",
                         },
                         {
                             label: "Chinese",
-                            description: command.aliases ? command.aliases.join(', ') : '',
+                            description: null,
                             value: "zh",
                         }]))
 
 
 
-        const msg = await message.reply(`:ping_pong: Pong!`);
+        const embed = new MessageEmbed()
+        .setColor('#DD8505')
+        .setTitle('Translator')
+        .setAuthor(message.author.username, message.author.avatarURL())
+        .setThumbnail('https://media.discordapp.net/attachments/810817634497069059/874184232849788968/translator.png')
+        .setDescription('Select a language to translate from.');
+
+        await message.reply({embeds: [embed], components: [row]});
 
 
     }
