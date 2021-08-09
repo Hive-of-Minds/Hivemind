@@ -6,8 +6,8 @@ module.exports = new Command({
     description: 'Avatar command',
 
     async run(message, args, client) {
-        if (message.mentions.users.size > 1) {
-            message.reply("too many members mentioned");
+        if (message.mentions.users.size !== 1) {
+            message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments ? this.arguments : ''}\``);
             return;
         }
         const user = message.mentions.users.first();
