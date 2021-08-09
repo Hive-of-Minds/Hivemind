@@ -4,9 +4,11 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'avatar',
     description: 'Avatar command',
+    aliases: ['pfp', 'profilepic', 'profile'],
+    arguments: '[user]',
 
     async run(message, args, client) {
-        if (message.mentions.users.size !== 1) {
+        if (message.mentions.users.size > 1) {
             message.reply(`Correct usage: \`${client.prefix}${this.name} ${this.arguments ? this.arguments : ''}\``);
             return;
         }

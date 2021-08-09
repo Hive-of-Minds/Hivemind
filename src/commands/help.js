@@ -4,6 +4,7 @@ const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require('discord.js'
 module.exports = new Command({
     name: 'help',
     description: 'Help command',
+    aliases: ['info', 'hepl'],
 
     async run(message, args, client) {
         const row = new MessageActionRow()
