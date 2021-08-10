@@ -4,6 +4,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'guildinfo',
     aliases: ['serverinfo'],
+    emoji: '🏠',
     description: 'Guild Info Command',
 
     async run(message)  {
