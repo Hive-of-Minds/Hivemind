@@ -1,4 +1,4 @@
-const Command = require('../structures/command.js');
+const Command = require('../../structures/command.js');
 const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require('discord.js');
 
 module.exports = new Command({
