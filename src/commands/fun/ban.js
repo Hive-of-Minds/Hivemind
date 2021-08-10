@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = new Command({
     name: 'ban',
-    description: 'tihihi',
+    description: 'Ban a member.',
     userPermissions: ['BAN_MEMBERS'],
     async run(message, args, client) {
 

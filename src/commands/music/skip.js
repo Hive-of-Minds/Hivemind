@@ -3,7 +3,7 @@ const {getVoiceConnection, createAudioPlayer} = require("@discordjs/voice");
 
 module.exports = new Command({
     name: 'skip',
-    description: 'skip command',
+    description: 'Skips current song.',
     aliases: ['s', 'forceskip', 'fs'],
 
     async run(message) {

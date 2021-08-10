@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = new Command({
     name: 'botinfo',
-    description: 'Bot info command',
+    description: 'Returns info about HiveMind.',
 
     async run(message) {
         const embed = new MessageEmbed()

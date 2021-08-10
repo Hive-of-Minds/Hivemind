@@ -3,7 +3,7 @@ const {getVoiceConnection} = require("@discordjs/voice");
 
 module.exports = new Command({
     name: 'stop',
-    description: 'stop command',
+    description: 'Stops music from playing.',
     aliases: ['dc', 'disconnect', 'leave'],
 
     async run(message) {

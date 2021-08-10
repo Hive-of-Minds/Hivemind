@@ -9,7 +9,7 @@ const {
 
 module.exports = new Command({
     name: 'play',
-    description: 'play command',
+    description: 'Plays given music in a vc.',
     aliases: ['p'],
 
     async run(message, args) {

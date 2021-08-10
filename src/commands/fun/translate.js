@@ -4,7 +4,7 @@ const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require('discord.js'
 
 module.exports = new Command({
     name: 'translate',
-    description: 'translates the given string to one of the languages specified.',
+    description: 'Translates the given string to one of the languages specified.',
     aliases: ["tlate"],
     emoji: `🌐`,
 

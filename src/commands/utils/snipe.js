@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 
 module.exports = new Command({
     name: 'snipe',
-    description: 'Snipe command',
+    description: 'Shows last deleted message.',
     emoji: '🔫',
 
     async run(message, args, client) {

@@ -4,7 +4,7 @@ const {MessageEmbed} = require("discord.js");
 
 module.exports = new Command({
     name: 'weather',
-    description: 'weather command',
+    description: 'Shows the weather in the given city. Defaults to Melbourne.',
     emoji: '🌦️',
     aliases: ['climate', 'wthr', 'clmt'],
     arguments: '<city>',

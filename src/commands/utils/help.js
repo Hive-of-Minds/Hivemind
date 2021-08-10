@@ -3,7 +3,7 @@ const {MessageActionRow, MessageSelectMenu, MessageEmbed} = require('discord.js'
 
 module.exports = new Command({
     name: 'help',
-    description: 'Help command',
+    description: 'Displays information about each command.',
     aliases: ['info', 'hepl'],
     emoji: '📙',
 
