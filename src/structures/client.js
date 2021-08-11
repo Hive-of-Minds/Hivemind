@@ -26,7 +26,7 @@ class Client extends Discord.Client {
 
         this.commands = new Collection();
         this.snipes = new Collection();
-        this.queue = new Map();
+        this.queue = new Collection();
 
         this.token = config.token;
         this.prefix = config.prefix;
@@ -49,11 +49,8 @@ class Client extends Discord.Client {
                 const command = require(file);
                 const folder = path.basename(path.dirname(file));
 
-                // this.commands.set(command.name, command);
                 this.commands.set(command, folder);
-                // console.log(`${folder}, ${command.description}: ${(!!command)}`)
             });
-        // console.log(this.commands.map((folder, command) => `${command.name}, ${folder}`));
 
         getFiles(path.resolve(__dirname, '../events'))
             .filter(file => file.endsWith('.js'))
