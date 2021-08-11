@@ -5,7 +5,7 @@ module.exports = new Command({
     name: 'guildinfo',
     aliases: ['serverinfo'],
     emoji: '🏠',
-    description: 'Guild Info Command',
+    description: 'Returns basic info about the server.',
 
     async run(message)  {
         let invite = await message.channel.createInvite(36000, 1);

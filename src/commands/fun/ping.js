@@ -3,7 +3,7 @@ const Command = require('../../structures/command.js');
 module.exports = new Command({
     name: 'ping',
     aliases: ['pong', 'pingpong'],
-    description: 'Ping command',
+    description: 'Shows latency.',
     emoji: '🏓',
 
     async run(message, args, client) {

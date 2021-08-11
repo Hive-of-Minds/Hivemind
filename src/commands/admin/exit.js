@@ -2,7 +2,7 @@ const Command = require('../../structures/command.js');
 
 module.exports = new Command({
     name: 'exit',
-    description: 'exit command',
+    description: 'Shuts the bot down.',
     emoji: '💀',
     hidden: true,
     ownerOnly: true,

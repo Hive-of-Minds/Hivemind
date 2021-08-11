@@ -3,7 +3,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = new Command({
     name: 'uptime',
-    description: 'uptime command',
+    description: "Shows how long the bot has been running since it's last restart.",
     emoji: '⏱',
 
     async run(message, args, client) {
