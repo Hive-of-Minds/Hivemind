@@ -9,7 +9,7 @@ module.exports = new Command({
         const embed = new MessageEmbed()
             .setTitle('Hivemind')
             .setThumbnail("https://cdn.discordapp.com/attachments/873564554674716765/873719057533251644/HiveMind_pfp.png")
-            .setDescription("Bot made in Javascript by divad-nebnahtan, TardisSyntax, pax, Daaaronaaronax and OManW25")
+            .setDescription("Bot made in Javascript by divad-nebnahtan, TardisSyntax, pax and Daaaronaaronax.")
             .setFooter("Use h.help in order to get a list of all the commands available");
         message.reply({embeds: [embed]});
     }
