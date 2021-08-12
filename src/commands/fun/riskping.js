@@ -4,6 +4,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = new Command({
     name: 'riskping',
     description: 'A random chance of pinging everyone.',
+    emoji: '🎲',
 
     async run(message, args, client) {
 

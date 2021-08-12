@@ -4,6 +4,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = new Command({
     name: 'botinfo',
     description: 'Returns info about HiveMind.',
+    emoji: '🤖',
 
     async run(message) {
         const embed = new MessageEmbed()
