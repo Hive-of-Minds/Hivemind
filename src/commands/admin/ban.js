@@ -5,6 +5,8 @@ module.exports = new Command({
     name: 'ban',
     description: 'Ban a member.',
     userPermissions: ['BAN_MEMBERS'],
+    emoji: '🔨',
+
     async run(message, args, client) {
 
         message.guild.members.ban(message.mentions.members.first());
