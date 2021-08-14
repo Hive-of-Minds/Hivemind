@@ -11,6 +11,7 @@ class Command {
         this.cooldown = options.cooldown;
         this.ownerOnly = options.ownerOnly;
         this.hidden = options.hidden;
+        this.nsfw = options.nsfw;
         this.run = options.run;
     }
 }
