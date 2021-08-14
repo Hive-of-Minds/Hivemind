@@ -1,5 +1,4 @@
 const Command = require('../../structures/command.js');
-const { MessageEmbed } = require("discord.js");
 
 module.exports = new Command({
     name: 'ban',
@@ -7,9 +6,9 @@ module.exports = new Command({
     userPermissions: ['BAN_MEMBERS'],
     emoji: '🔨',
 
-    async run(message, args, client) {
+    async run(message) {
 
-        message.guild.members.ban(message.mentions.members.first());
+        await message.guild.members.ban(message.mentions.members.first());
     }
 });
 
