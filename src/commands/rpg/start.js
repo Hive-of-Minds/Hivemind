@@ -1,7 +1,7 @@
 const Command = require('../../structures/command.js');
 const fs = require("fs");
 const path = require("path");
-const dataPath = path.resolve(__dirname, '../rpg/data.json');
+const dataPath = path.resolve(__dirname, '../rpg/playerdata.json');
 
 module.exports = new Command({
     name: 'start',

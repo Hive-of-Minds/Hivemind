@@ -2,7 +2,7 @@ const Command = require('../../structures/command.js');
 const fs = require("fs");
 const path = require("path");
 const {MessageEmbed} = require("discord.js");
-const dataPath = path.resolve(__dirname, '../rpg/data.json');
+const dataPath = path.resolve(__dirname, '../rpg/playerdata.json');
 const itemPath = path.resolve(__dirname, '../rpg/items.json');
 
 module.exports = new Command({
@@ -24,7 +24,7 @@ module.exports = new Command({
             .setTitle('-- ' + userData.username + ' --')
             .setColor('#DD8505')
             .setAuthor(message.author.username, message.author.avatarURL());
-        userData.inventory.forEach(item => embed.addField(item.name, items[item.type], true));
+        userData.inventory.filter(item => item).forEach(item => embed.addField(item.name, items[item.type], true));
 
         message.reply({embeds: [embed]});
     }
