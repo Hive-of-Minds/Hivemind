@@ -7,9 +7,9 @@ module.exports = new Command({
     emoji: '🔫',
 
     async run(message, args, client) {
-        const snipes = client.snipes.get(message.channel.id) || [];
-        const snipe = snipes[0];
-        if (!snipe) return message.reply('no message has been deleted')
+        const snipes = client.snipes.get(message.channel.id) || []; //Accesses the deleted messages (snipes) of the channel that the command was sent in
+        const snipe = snipes[0]; //Accesses the most recent snipe
+        if (!snipe) return message.reply('No message has been deleted') //Situation in which there is no snipes
         const embed = new MessageEmbed()
             .setAuthor(snipe.author.tag)
             .setThumbnail(snipe.author.avatarURL())

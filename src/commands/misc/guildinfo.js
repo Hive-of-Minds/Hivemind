@@ -8,11 +8,11 @@ module.exports = new Command({
     description: 'Returns basic info about the server.',
 
     async run(message)  {
-        let invite = await message.channel.createInvite(36000, 1);
-        let guild = message.guild;
-        let image = message.guild.iconURL();
+        let invite = await message.channel.createInvite(36000, 1); //Creates an invite that will last an hour and can only be used once
+        let guild = message.guild; //Sets guild to the guild that the message was sent in
+        let image = message.guild.iconURL(); //Accesses the server picture
 
-        guild.fetchOwner().then(owner => {
+        guild.fetchOwner().then(owner => { //If Hivemind is able to access the guild's owner, then it does the following
             console.log(owner.user.username + "#" + owner.user.discriminator);
             const embed = new MessageEmbed()
                 .setTitle(guild.name)

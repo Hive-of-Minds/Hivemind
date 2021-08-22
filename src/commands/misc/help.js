@@ -8,7 +8,7 @@ module.exports = new Command({
     emoji: '📙',
 
     async run(message, args, client) {
-        const options = Array.from(client.commands.keys()).filter(command => !command.hidden).map(command => {
+        const options = Array.from(client.commands.keys()).filter(command => !command.hidden).map(command => { //Accesses the non-hidden commands and returns the following
             return {
                 label: command.name,
                 description: command.aliases ? command.aliases.join(', ') : null,
@@ -16,7 +16,7 @@ module.exports = new Command({
                 emoji: command.emoji
             };
         });
-        const row = new MessageActionRow().addComponents(new MessageSelectMenu()
+        const row = new MessageActionRow().addComponents(new MessageSelectMenu() //Creates a menu that has the following
             .setCustomId(`help ${client.prefix} ${message.author.id}`)
             .setPlaceholder('No command selected')
             .addOptions(options)
