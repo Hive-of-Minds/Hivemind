@@ -7,9 +7,9 @@ module.exports = new Command({
     emoji: '⏱',
 
     async run(message, args, client) {
-        let totalSeconds = client.uptime / 1000;
-        const days = Math.floor(totalSeconds / 86400);
-        totalSeconds %= 86400;
+        let totalSeconds = client.uptime / 1000; //Accesses the amount of time that the bot was online and divides it by 1000
+        const days = Math.floor(totalSeconds / 86400); //Returns the largest number less than or equal to the uptime in seconds dividing by 86400
+        totalSeconds %= 86400; //Modulos itself
         const hours = Math.floor(totalSeconds / 3600);
         totalSeconds %= 3600;
         const minutes = Math.floor(totalSeconds / 60);
