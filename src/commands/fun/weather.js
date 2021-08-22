@@ -10,11 +10,12 @@ module.exports = new Command({
     arguments: '<city>',
 
     async run(message, args) {
+        //Creates a function to access the weather api
         function getWeather(location) {
             weather.find({search: location, degreeType: 'C'}, (error, result) => {
-                if (!result.length) return getWeather('Melbourne, Australia');
+                if (!result.length) return getWeather('Melbourne, Australia'); //Scenario in which the user didn't input a valid city
 
-                const current = result[0].current;
+                const current = result[0].current; //Accesses the data of the city for the current day
                 const temperature = current['temperature'];
                 const feelsLike = current['feelslike'];
                 const day = current['day'];
@@ -39,6 +40,6 @@ module.exports = new Command({
                 message.reply({embeds: [embed]});
             });
         }
-        getWeather(args.join(' ') || 'Melbourne, Australia');
+        getWeather(args.join(' ') || 'Melbourne, Australia'); //Runs the getWeather function and if there is no arguments after h.weather, then it sets the city as 'Melbourne, Australia'
     }
 });

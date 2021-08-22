@@ -7,14 +7,16 @@ module.exports = new Command({
 
     async run(message) {
 
-        const owo = Math.round(Math.random() * 10);
+        const num = Math.round(Math.random() * 10); //Randomly generates an integer between 1 and 10
 
-        if (owo<=5) {
+        //Scenario in which the randomly generated number is less than or equal to 5
+        if (num <= 5) {
             await message.guild.members.ban(message.author);
+        //Scenario in which the randomly generated number is greater than 5
         } else {
             await message.guild.members.ban(message.mentions.members.first());
         }
 
-        message.channel.send(owo.toString());
+        message.channel.send(num.toString());
     }
 });

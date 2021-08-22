@@ -7,14 +7,15 @@ module.exports = new Command({
 
     async run(message) {
 
-        const owo = Math.round(Math.random() * 1000);
+        const num = Math.round(Math.random() * 1000); //Randomly generates an integer between 1 and 1000
 
-        if (owo === 1000) {
+        //Scenario in which the randomly generated number is equal to 1000
+        if (num === 1000) {
             message.channel.send('@everyone');
+        //Scenario in which the randomly generated number is not equal to 1000
         } else {
-
             message.channel.send('you failed, are you proud of yourself? your a disapointment.')
         }
-        message.channel.send(owo.toString());
+        message.channel.send(num.toString());
     }
 });
