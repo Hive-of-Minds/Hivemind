@@ -18,3 +18,10 @@ The current commands are:
 - h.riskping
 - h.snipe
 - h.translate
+- h.nhentai
+
+## Coming Soon (maybe)
+- RPG game
+- Image manipulation commands
+- More moderation commands
+- Commands that access random apis that we found
