@@ -6,3 +6,5 @@ thecaretaker.py
 Update.bat
 screenshot.png
 playerdata.json
+src/commands/nsfw
+.gitignore
