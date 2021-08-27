@@ -7,6 +7,8 @@ module.exports = new Command({
     description: 'Translates the given string to one of the languages specified.',
     aliases: ["tlate"],
     emoji: `🌐`,
+    hidden: true,
+    ownerOnly,
 
     async run(message, args, client) {
         const row = new MessageActionRow()
