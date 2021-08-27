@@ -4,8 +4,8 @@ const {MessageAttachment} = require("discord.js");
 const path = require("path");
 
 module.exports = new Command({
-    name: 'test',
-    description: 'poop',
+    name: 'pride',
+    description: 'show off some pride',
 
     async run(message, args) {
         const canvas = createCanvas(300, 200);
