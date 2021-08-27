@@ -8,7 +8,7 @@ module.exports = new Command({
     aliases: ["tlate"],
     emoji: `🌐`,
     hidden: true,
-    ownerOnly,
+    ownerOnly: true,
 
     async run(message, args, client) {
         const row = new MessageActionRow()
