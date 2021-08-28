@@ -44,7 +44,8 @@ module.exports = new Event({
 
                 interaction.update({embeds: [embed], components: [categoryRow, commandRow]});
 
-            } else if (interaction.customId === `help_commands ${client.prefix} ${interaction.user.id}`) {
+            }
+            else if (interaction.customId === `help_commands ${client.prefix} ${interaction.user.id}`) {
                 const command = Array.from(client.commands.keys()).find(command => command.name === interaction.values[0]);
 
                 const embed = new MessageEmbed()
@@ -86,7 +87,8 @@ module.exports = new Event({
                     embed.addField('NSFW', `\`\`\`\nTrue\n\`\`\``, false);
 
                 await interaction.update({embeds: [embed]});
-            } else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`) {
+            }
+            else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`) {
 
             }
         }
