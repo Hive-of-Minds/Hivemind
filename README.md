@@ -22,6 +22,7 @@ The current commands are:
 
 ## Coming Soon (maybe)
 - RPG game
-- Image manipulation commands
+- Image manipulation commands (using the Canvas api)
 - More moderation commands
 - Commands that access random apis that we found
+- Alchemy game (work in progress)
