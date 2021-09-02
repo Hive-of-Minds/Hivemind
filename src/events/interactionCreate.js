@@ -1,7 +1,5 @@
 const Event = require('../structures/event');
-const {MessageEmbed, MessageActionRow, MessageSelectMenu, MessageAttachment} = require("discord.js");
-const fs = require("fs");
-const path = require("path");
+const {MessageEmbed, MessageActionRow, MessageSelectMenu} = require("discord.js");
 
 module.exports = new Event({
     event: 'interactionCreate',
@@ -88,70 +86,6 @@ module.exports = new Event({
                     embed.addField('NSFW', `\`\`\`\nTrue\n\`\`\``, false);
 
                 await interaction.update({embeds: [embed]});
-            } else if (interaction.customId === `acraft ${client.prefix} ${interaction.user.id}`) {
-                const pFile = path.resolve(__dirname, '../commands/alchemy/players.json');
-                const rFile = path.resolve(__dirname, '../commands/alchemy/recipes.json');
-                let pData = JSON.parse(fs.readFileSync(pFile, "utf8"));
-                const rData = JSON.parse(fs.readFileSync(rFile, "utf8"));
-
-                const first = interaction.values[0];
-                const second = interaction.values[1];
-
-                if (rData[first + '+' + second]) {
-                    if (!(pData[interaction.user.id].items.includes(first) && pData[interaction.user.id].items.includes(second))) return interaction.update();
-
-                    let firstFile = new MessageAttachment(path.resolve(__dirname, '../../assets/bigalchemy/' + first + '.png'));
-                    let embed1 = new MessageEmbed()
-                        .setImage('attachment://' + first + '.png');
-
-                    let secondFile = new MessageAttachment(path.resolve(__dirname, '../../assets/bigalchemy/' + second + '.png'));
-                    let embed2 = new MessageEmbed()
-                        .setImage('attachment://' + second + '.png')
-
-                    interaction.update({
-                        embeds: [embed1, embed2],
-                        files: [firstFile, secondFile],
-                        components: []
-                    }).then(() => {
-                        setTimeout(() => {
-                            interaction.editReply({
-                                embeds: [embed2, embed1],
-                                files: [secondFile, firstFile],
-                                attachments: [],
-                                components: []
-                            }).then(() => {
-                                setTimeout(() => {
-                                    interaction.editReply({
-                                        embeds: [embed1, embed2],
-                                        files: [secondFile, firstFile],
-                                        attachments: [],
-                                        components: []
-                                    }).then(() => {
-                                        setTimeout(() => {
-                                            const resultFile = new MessageAttachment(path.resolve(__dirname, '../../assets/bigalchemy/' + rData[first + '+' + second] + '.png'));
-                                            const resultEmbed = new MessageEmbed()
-                                                .setImage('attachment://' + rData[first + '+' + second] + '.png');
-                                            interaction.editReply({
-                                                embeds: [resultEmbed],
-                                                files: [resultFile],
-                                                attachments: [],
-                                                components: []
-                                            });
-
-                                            pData = JSON.parse(fs.readFileSync(pFile, "utf8"));
-                                            pData[interaction.user.id].items.push(rData[first + '+' + second]);
-                                            fs.writeFileSync(pFile, JSON.stringify(pData, null, 2));
-
-                                        }, 1000);
-
-                                    });
-                                }, 1000);
-                            });
-                        }, 1000);
-                    });
-
-
-                }
             } else if (interaction.customId === `translate ${client.prefix} ${interaction.user.id}`) {
 
             }

@@ -9,6 +9,9 @@ module.exports = new Command({
     description: 'alchemy inventory command',
 
     async run(message) {
+        /*
+        TODO: Add total item count to inventory (123/456)
+        */
         const pData = JSON.parse(fs.readFileSync(pFile, "utf8"));
 
         if (!pData[message.author.id]) return message.reply('You need to make an account to use this command!');
