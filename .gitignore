@@ -1,7 +1,6 @@
 .gitignore
 .idea/
 node_modules/
-bigalchemy/
 Run.bat
 Update.bat
 thecaretaker.py
