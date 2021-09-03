@@ -26,7 +26,7 @@ The current commands are:
 - h.weather
 - h.nhentai
 
-##Alchemy
+## Alchemy
 A discord port of the popular web game 'Little Alchemy'.
 The current commands are:
  - h.acraft - craft new elements
