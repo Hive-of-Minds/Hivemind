@@ -3,6 +3,7 @@ const {MessageEmbed} = require('discord.js');
 const nhentai = require('nhentai-js')
 const downloader = require('image-downloader')
 const { API, } = require('nhentai-api');
+const Command = require('../../structures/command.js');
 
 function getimg(inurl){
 
@@ -42,10 +43,18 @@ module.exports = new Command({
                 .setThumbnail(coverurl)
                 .setDescription('Select a command to get started!');
 
+                if(typeof dojin['details']['tags'] !== "undefined"){
                 infoembed.setDescription(dojin['details']['tags'].join(', '));
+                }
+                if(typeof dojin['details']['artists'] !== "undefined"){
                 infoembed.addField('**Artists**', dojin['details']['artists'].join(', '));
-                infoembed.addField('**Chracters**', dojin['details']['characters'].join(', '));
+                }
+                if(typeof dojin['details']['characters'] !== "undefined"){
+                infoembed.addField('**Characters**', dojin['details']['characters'].join(', '));
+                }
+                if(typeof dojin['details']['categories'] !== "undefined"){
                 infoembed.addField('**Categories**', dojin['details']['categories'].join(', '));
+                }
 
                 embedpages.push(infoembed);
                 //console.log(dojin['pages'])
