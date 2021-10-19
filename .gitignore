@@ -1,7 +1,9 @@
-node_modules/
+.gitignore
 .idea/
-config.json
+node_modules/
 Run.bat
-thecaretaker.py
 Update.bat
+thecaretaker.py
 screenshot.png
+config.json
+playerdata.json

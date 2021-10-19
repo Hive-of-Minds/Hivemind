@@ -18,19 +18,22 @@ module.exports = new Event({
         });
         if (command) {
             if (command.ownerOnly && !client.owners.includes(message.author.id)) {
-                return message.reply(`Only owners can use ${command.name}`);
+                return message.reply(`${command.name} is an owner-only command!`);
+            }
+            if (command.nsfw && !message.channel.nsfw) {
+                return message.reply(`${command.name} can only be run in NSFW channels!`);
             }
             if (command.botPermissions) {
-                let clientChannelPermissions = message.channel.permissionsFor(message.guild.me);
+                const clientChannelPermissions = message.channel.permissionsFor(message.guild.me);
                 if (!clientChannelPermissions.has(command.botPermissions)) {
                     const missingPermissions = command.botPermissions.filter(perm => clientChannelPermissions.has(perm) === false).join(', ')
                     return message.reply(`I am missing permissions: ${missingPermissions}`)
                 }
             }
             if (command.userPermissions) {
-                let memberChannelPermissions = message.channel.permissionsFor(message.member);
+                const memberChannelPermissions = message.channel.permissionsFor(message.member);
                 if (!memberChannelPermissions.has(command.userPermissions)) {
-                    let missingPermissions = command.userPermissions.filter(perm => memberChannelPermissions.has(perm) === false).join(', ')
+                    const missingPermissions = command.userPermissions.filter(perm => memberChannelPermissions.has(perm) === false).join(', ')
                     return message.reply(`You are missing permissions: ${missingPermissions}`)
                 }
             }
@@ -44,7 +47,7 @@ module.exports = new Event({
                     const expirationTime = timeStamps.get(message.author.id) + cooldownAmount;
                     if (currentTime < expirationTime) {
                         const timeLeft = (expirationTime - currentTime) / 1000;
-                        return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds before using ${command.name} again.`);
+                        return message.reply(`Please wait ${timeLeft.toFixed(1)} more seconds before using ${command.name} again!`);
                     }
                 }
                 timeStamps.set(message.author.id, currentTime);

@@ -9,6 +9,6 @@ module.exports = new Command({
 
     async run(message) {
         await message.reply('Shutting down...');
-        process.exit(0);
+        process.exit(0); //Shuts down the bot
     }
 });
