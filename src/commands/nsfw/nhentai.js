@@ -39,7 +39,7 @@ module.exports = new Command({
                 .setColor('#DD8505')
                 .setTitle(dojin['title'])
                 .setURL(dojin['link'])
-                .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
+                .setAuthor('nhenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
                 .setThumbnail(coverurl)
                 .setDescription('Select a command to get started!');
 
@@ -65,7 +65,7 @@ module.exports = new Command({
                     .setColor('#DD8505')
                     .setTitle(`Page ${i+1}`)
                     .setURL(null) 
-                    .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
+                    .setAuthor('nhenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
                     .setThumbnail(null)
                     .setImage(dojin['pages'][i]);
                     embedpages.push(pageembed);
