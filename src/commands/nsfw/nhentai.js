@@ -1,83 +1,76 @@
-const Command = require('../../structures/command.js');
 const pager = require('discord.js-pagination');
 const {MessageEmbed} = require('discord.js');
 const nhentai = require('nhentai-js')
+const downloader = require('image-downloader')
+const { API, } = require('nhentai-api');
 
+function getimg(inurl){
+
+    option = {
+
+        url : inurl,
+        dest: './nh_temp_pics'
+
+    }
+
+}
 
 module.exports = new Command({
     name: 'nhentai',
     aliases: ['nh'],
     description: "Searches for the given number on nhentai's database.",
-    emoji: '🍆',
-    nsfw: true,
+    hidden: true,
 
-    async run(message, args) {
-        async () => {
-            if (nhentai.exists('147476')) { // checks if doujin exists
-                const dojin = await nhentai.getDoujin('147476')
+    async run(message, args, client) {
+
+        const api = new API();
+        api.getBook(args[0]).then(book => {
+            coverurl = api.getImageURL(book.cover);
+        });
+        //console.log(book.pages);
+
+        //console.log("here1");
+        async function doit() {
+            if(nhentai.exists(args[0])) { // checks if doujin exists
+                const dojin = await nhentai.getDoujin(args[0])
                 embedpages = [];
                 infoembed = new MessageEmbed()
-                    .setColor('#DD8505')
-                    .setTitle(dojin['title'])
-                    .setURL(dojin['link'])
-                    .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
-                    .setThumbnail(dojin['details']['pages'][0])
-                    .setDescription('Select a command to get started!');
+                .setColor('#DD8505')
+                .setTitle(dojin['title'])
+                .setURL(dojin['link'])
+                .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
+                .setThumbnail(coverurl)
+                .setDescription('Select a command to get started!');
 
-                str_build = "#"
-                for (let i = 0; i < dojin['details']['tags'].length; i++) {
-                    str_build.concat(dojin['details']['tags'][i]);
-                    if (i !== dojin['details']['tags'].length - 1) {
-                        str_build.concat(", #");
-                    }
-                }
-                infoembed.setDescription(str_build);
-
-                str_build = ""
-                for (let i = 0; i < dojin['details']['characters'].length; i++) {
-                    str_build.concat(dojin['details']['characters'][i]);
-                    if (i !== dojin['details']['characters'].length - 1) {
-                        str_build.concat(",");
-                    }
-                }
-                infoembed.addFeild('**Chracters**', str_build);
-
-                str_build = ""
-                for (let i = 0; i < dojin['details']['categories'].length; i++) {
-                    str_build.concat(dojin['details']['categories'][i]);
-                    if (i !== dojin['details']['categories'].length - 1) {
-                        str_build.concat(",");
-                    }
-                }
-                infoembed.addFeild('**Categories**', str_build);
-
-                str_build = ""
-                for (let i = 0; i < dojin['details']['artists'].length; i++) {
-                    str_build.concat(dojin['details']['artists'][i]);
-                    if (i !== dojin['details']['artists'].length - 1) {
-                        str_build.concat(",");
-                    }
-                }
-                infoembed.setFooter(`*${str_build}*`);
+                infoembed.setDescription(dojin['details']['tags'].join(', '));
+                infoembed.addField('**Artists**', dojin['details']['artists'].join(', '));
+                infoembed.addField('**Chracters**', dojin['details']['characters'].join(', '));
+                infoembed.addField('**Categories**', dojin['details']['categories'].join(', '));
 
                 embedpages.push(infoembed);
+                //console.log(dojin['pages'])
+                
 
-                for (let i = 0; i < dojin['details']['pages'].length; i++) {
+                for (let i = 0; i < parseInt(dojin['details']['pages'][0]); i++){
                     pageembed = new MessageEmbed()
-                        .setColor('#DD8505')
-                        .setTitle(`Page ${i + 1}`)
-                        .setURL(dojin['details']['pages'][i])
-                        .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
-                        .setThumbnail(dojin['details']['pages'][i])
-                        .setImage(dojin['details']['pages'][i]);
+                    .setColor('#DD8505')
+                    .setTitle(`Page ${i+1}`)
+                    .setURL(null) 
+                    .setAuthor('NHenati', "https://media.discordapp.net/attachments/810817634497069059/874883625819197460/n.png")
+                    .setThumbnail(null)
+                    .setImage(dojin['pages'][i]);
                     embedpages.push(pageembed);
 
                 }
+                //message.reply({embeds: [embedpages[0]]})
+                //console.log(embedpages);
 
                 pager(message, embedpages);
-            } else {
-                message.reply(`Doujin ${args[0]} does not exsist.`)
+                //console.log("oops");
             }
-        }
-    }
+            else{
+                message.reply(`Doujin ${args[0]} does not exsist.`)
+            }}
+            doit();
+            }
 })
