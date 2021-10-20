@@ -4,7 +4,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = new Command({
     name: 'help',
     description: 'Displays information about each command.',
-    aliases: ['info', 'hepl'],
+    aliases: ['h'],
     arguments: '[command | category]',
     emoji: '📙',
 

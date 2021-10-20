@@ -6,7 +6,7 @@ module.exports = new Command({
     name: 'weather',
     description: 'Shows the weather in the given city. Defaults to Melbourne.',
     emoji: '🌦️',
-    aliases: ['climate', 'wthr', 'clmt'],
+    aliases: ['wt'],
     arguments: '<city>',
 
     async run(message, args) {

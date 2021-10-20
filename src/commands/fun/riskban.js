@@ -4,6 +4,7 @@ module.exports = new Command({
     name: 'riskban',
     description: 'A random chance that the mentioned person will be banned or the author will be banned.',
     emoji: '🎲',
+    aliases: ['rb'],
 
     async run(message) {
 

@@ -11,7 +11,8 @@ module.exports = new Command({
     name: 'acraft',
     description: 'alchemy craft command',
     arguments: '<item>, <item>',
-    cooldown: 10,
+    aliases: ['ac'],
+    cooldown: 5,
 
     async run(message, args, client) {
         // Read data files

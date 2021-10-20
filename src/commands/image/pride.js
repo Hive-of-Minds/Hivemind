@@ -1,13 +1,13 @@
 const Command = require("../../structures/command.js");
 const {createCanvas, loadImage} = require("canvas");
 const {MessageAttachment} = require("discord.js");
-const path = require("path");
 
 module.exports = new Command({
     name: 'pride',
     description: 'show off some pride',
+    aliases: ['pr'],
 
-    async run(message, args) {
+    async run(message) {
         const canvas = createCanvas(300, 200);
         const context = canvas.getContext('2d');
         const background = await loadImage('https://cdn.discordapp.com/attachments/867730676203257866/880778495070974062/unknown.png');

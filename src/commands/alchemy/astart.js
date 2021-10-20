@@ -7,6 +7,7 @@ const pFile = path.resolve(__dirname, '../alchemy/players.json');
 module.exports = new Command({
     name: 'astart',
     description: 'alchemy start command',
+    aliases: ['as'],
 
     async run(message) {
         // Read data file

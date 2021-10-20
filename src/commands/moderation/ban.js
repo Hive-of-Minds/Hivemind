@@ -5,6 +5,7 @@ module.exports = new Command({
     description: 'Ban a member.',
     userPermissions: ['BAN_MEMBERS'],
     emoji: '🔨',
+    aliases: ['b'],
 
     async run(message) {
 

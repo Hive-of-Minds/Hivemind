@@ -3,7 +3,7 @@ const {MessageEmbed} = require("discord.js");
 
 module.exports = new Command({
     name: 'guildinfo',
-    aliases: ['serverinfo'],
+    aliases: ['gi'],
     emoji: '🏠',
     description: 'Returns basic info about the server.',
 

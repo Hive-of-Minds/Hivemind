@@ -5,6 +5,7 @@ module.exports = new Command({
     name: 'botinfo',
     description: 'Returns info about HiveMind.',
     emoji: '🤖',
+    aliases: ['bi'],
 
     async run(message) {
         const embed = new MessageEmbed()

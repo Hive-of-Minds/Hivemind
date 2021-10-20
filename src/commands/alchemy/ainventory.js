@@ -8,6 +8,7 @@ const rFile = path.resolve(__dirname, '../alchemy/recipes.json')
 module.exports = new Command({
     name: 'ainventory',
     description: 'alchemy inventory command',
+    aliases: ['ai'],
 
     async run(message) {
         // Read json files

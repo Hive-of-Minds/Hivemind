@@ -7,6 +7,8 @@ const dataPath = path.resolve(__dirname, '../rpg/playerdata.json');
 module.exports = new Command({
     name: 'profile',
     description: 'profile command',
+    hidden: true,
+    ownerOnly: true,
 
     async run(message) {
         const points = JSON.parse(fs.readFileSync(dataPath, "utf8"));

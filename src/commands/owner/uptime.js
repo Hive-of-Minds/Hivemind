@@ -4,7 +4,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = new Command({
     name: 'uptime',
     description: "Shows how long the bot has been running since it's last restart.",
-    emoji: '⏱',
+    hidden: true,
 
     async run(message, args, client) {
         let totalSeconds = client.uptime / 1000; //Accesses the amount of time that the bot was online and divides it by 1000

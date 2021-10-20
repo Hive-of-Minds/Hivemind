@@ -4,6 +4,7 @@ module.exports = new Command({
     name: 'riskping',
     description: 'A random chance of pinging everyone.',
     emoji: '🎲',
+    aliases: ['rp'],
 
     async run(message) {
 

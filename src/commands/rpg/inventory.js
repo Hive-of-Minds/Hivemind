@@ -8,6 +8,8 @@ const itemPath = path.resolve(__dirname, '../rpg/items.json');
 module.exports = new Command({
     name: 'inventory',
     description: 'inventory command',
+    hidden: true,
+    ownerOnly: true,
 
     async run(message) {
         const points = JSON.parse(fs.readFileSync(dataPath, "utf8"));
