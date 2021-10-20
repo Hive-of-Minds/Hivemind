@@ -20,7 +20,18 @@
       "steam",
       "puddle",
       "land",
-      "pond"
+      "pond",
+      "dust"
+    ]
+  },
+  "331681967437512705": {
+    "username": "nathanstanky",
+    "items": [
+      "fire",
+      "water",
+      "air",
+      "earth",
+      "steam"
     ]
   }
 }
