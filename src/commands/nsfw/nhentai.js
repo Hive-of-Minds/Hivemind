@@ -21,8 +21,10 @@ module.exports = new Command({
     aliases: ['nh'],
     description: "Searches for the given number on nhentai's database.",
     hidden: true,
+    nsfw: true,
 
     async run(message, args, client) {
+        if(nhentai.exists(args[0] == 'true')){
 
         const api = new API();
         api.getBook(args[0]).then(book => {
@@ -82,4 +84,8 @@ module.exports = new Command({
             }}
             doit();
             }
-})
+else {
+    message.reply(`Doujin ${args[0]} does not exsist.`)
+}
+}}
+)
