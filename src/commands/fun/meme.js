@@ -5,6 +5,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'meme',
     emoji: '🤣',
+    aliases: ['mm'],
     description: 'Grabs a random meme from a list of subreddits.',
 
     async run(message, args) {

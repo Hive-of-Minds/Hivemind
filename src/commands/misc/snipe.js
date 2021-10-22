@@ -5,6 +5,7 @@ module.exports = new Command({
     name: 'snipe',
     description: 'Shows last deleted message.',
     emoji: '🔫',
+    aliases: ['sn'],
 
     async run(message, args, client) {
         const snipes = client.snipes.get(message.channel.id) || []; //Accesses the deleted messages (snipes) of the channel that the command was sent in

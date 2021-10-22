@@ -4,7 +4,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = new Command({
     name: 'help',
     description: 'Displays information about each command.',
-    aliases: ['info', 'hepl'],
+    aliases: ['h'],
     arguments: '[command | category]',
     emoji: '📙',
 
@@ -30,11 +30,11 @@ module.exports = new Command({
         const command = commandKeys.find(command => command.name === args || (command.aliases && command.aliases.includes(args)));
 
         if (category) {
-            const commands = Array.from(client.commands.filter((folder) => folder === category).keys());
+            const commands = Array.from(client.commands.filter((folder, command) => folder === category && !command.hidden).keys());
 
             embed.setTitle(`-- ${category} --`)
                 .setDescription(commands.map(command => `\`${command.name}\``).join('\n') + `\n\nUse \`${client.prefix}${this.name} [command]\` to view a command in this category.`);
-        } else if (command) {
+        } else if (command && !command.hidden) {
             embed.setColor('#DD8505')
                 .setTitle(`${command.emoji || '--'} ${command.name} ${command.emoji || '--'}`)
                 .addField(

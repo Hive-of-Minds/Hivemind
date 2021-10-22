@@ -4,7 +4,7 @@ const {MessageEmbed} = require("discord.js");
 module.exports = new Command({
     name: 'avatar',
     description: 'Shows the profile picture of the mentioned user.',
-    aliases: ['pfp', 'profilepic'],
+    aliases: ['pfp'],
     arguments: '[user]',
     emoji: '📷',
 

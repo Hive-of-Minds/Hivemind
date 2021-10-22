@@ -2,7 +2,7 @@ const Command = require('../../structures/command.js');
 
 module.exports = new Command({
     name: 'ping',
-    aliases: ['pong', 'pingpong'],
+    aliases: ['p'],
     description: 'Shows latency.',
     emoji: '🏓',
 
