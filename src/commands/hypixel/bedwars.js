@@ -8,16 +8,21 @@ module.exports = new Command({
     description: 'Shows Hypixel information regarding bedwars statistics for a minecraft user.',
     aliases: ['bwars', 'bw', 'bedw'],
     arguments: '<username>',
+    hiddne: true,
 
     async run(message, args) {
 
         try {
             const uuid = await MinecraftAPI.uuidForName(args[0]);
-            //console.log(uuid);
+            console.log(`uuid:${uuid}`);
             fetch(`https://api.hypixel.net/player?uuid=${uuid}&key=1196621c-8927-4c9f-9a0e-fb69a2d92f82`)
-                .then(result => result.json())
+                .then(result => {
+                    result.json();
+                    console.log(result)
+                            })
                 .then(({ player }) => {
                     var bedwars_stats = player.stats.Bedwars;
+                    console.log(player);
                 
 
             const embed = new MessageEmbed()
@@ -40,8 +45,9 @@ module.exports = new Command({
                 .setImage("https://media.discordapp.net/attachments/810817634497069059/900590242053128222/HypixelLogo.png");
             message.reply({ embeds: [embed] });
         })
-        } catch {
-            console.log("oops i did a poopy")
+        } catch(error) {
+            message.reply("Sorry, somthign went wrong.");
+            console.log(error)
         }
 
         //     function getInfo(username) {

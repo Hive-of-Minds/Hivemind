@@ -8,6 +8,7 @@ module.exports = new Command({
     description: 'Shows Hypixel information regarding skywars statistics for a minecraft user.',
     aliases: ['swars', 'sw', 'skyw'],
     arguments: '<username>',
+    hiddne: true,
 
     async run(message, args) {
 

@@ -6,6 +6,7 @@ module.exports = new Command({
     name: 'pride',
     description: 'show off some pride',
     aliases: ['pr'],
+    hidden: true,
 
     async run(message) {
         const canvas = createCanvas(300, 200);
