@@ -1,9 +1,9 @@
 const Command = require('../../structures/command.js');
+const {MessageEmbed} = require("discord.js");
+const MinecraftAPI = require('minecraft-api');
 const fs = require("fs");
 const path = require("path");
 const dataPath = path.resolve(__dirname, 'joiners.json');
-const MinecraftAPI = require('minecraft-api');
-const {MessageEmbed} = require("discord.js");
 
 module.exports = new Command({
     name: 'adduser',
@@ -11,11 +11,17 @@ module.exports = new Command({
     description: '',
     userPermissions: ['MANAGE_CHANNELS'],
 
-    async run(message, args) {
+    async run(message, args, client) {
+        if (!args.length) {
+            const errorEmbed = new MessageEmbed()
+                .setTitle('Error!')
+                .setDescription(`Correct usage: \`${client.prefix}${this.name} ${this.arguments}\``)
+                .setAuthor(message.author.username, message.author.avatarURL());
+            return message.channel.send({embeds: [errorEmbed]});
+        }
+
         const uuid = await MinecraftAPI.uuidForName(args[0]);
-
         let joiners = JSON.parse(fs.readFileSync(dataPath, "utf8"));
-
         if (!joiners[message.channelId]) joiners[message.channelId] = [];
 
         if (joiners[message.channelId].includes(uuid)) {
