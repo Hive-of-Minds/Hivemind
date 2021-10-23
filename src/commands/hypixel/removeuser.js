@@ -32,6 +32,11 @@ module.exports = new Command({
 
         const uuid = await MinecraftAPI.uuidForName(args[0]);
 
+        if (!uuid) {
+            const embed = new MessageEmbed().setTitle("Error!").setDescription(`\`${args[0]}\` is not a valid username!`);
+            return message.reply({embeds: [embed]});
+        }
+
         if (!joiners[message.channelId].includes(uuid)) {
             const embed = new MessageEmbed().setTitle("Error!").setDescription(`\`${args[0]}\` is not added to this channel!`);
             return message.reply({embeds: [embed]});

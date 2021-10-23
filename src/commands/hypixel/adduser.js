@@ -21,6 +21,12 @@ module.exports = new Command({
         }
 
         const uuid = await MinecraftAPI.uuidForName(args[0]);
+
+        if (!uuid) {
+            const embed = new MessageEmbed().setTitle("Error!").setDescription(`\`${args[0]}\` is not a valid username!`);
+            return message.reply({embeds: [embed]});
+        }
+
         let joiners = JSON.parse(fs.readFileSync(dataPath, "utf8"));
         if (!joiners[message.channelId]) joiners[message.channelId] = [];
 
